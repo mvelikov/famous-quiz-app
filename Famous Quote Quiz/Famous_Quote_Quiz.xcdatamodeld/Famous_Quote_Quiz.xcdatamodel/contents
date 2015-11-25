@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="9057" systemVersion="15A284" minimumToolsVersion="Xcode 7.0">
+    <entity name="Answer" representedClassName="Answer" syncable="YES">
+        <attribute name="isCorrect" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="question" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Question" inverseName="answers" inverseEntity="Question" syncable="YES"/>
+    </entity>
+    <entity name="Question" representedClassName="Question" syncable="YES">
+        <attribute name="isMultipleChoice" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="answers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Answer" inverseName="question" inverseEntity="Answer" syncable="YES"/>
+        <relationship name="sessions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SessionsQuestions" inverseName="questions" inverseEntity="SessionsQuestions" syncable="YES"/>
+    </entity>
+    <entity name="Session" representedClassName="Session" syncable="YES">
+        <relationship name="questions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SessionsQuestions" inverseName="sessions" inverseEntity="SessionsQuestions" syncable="YES"/>
+    </entity>
+    <entity name="SessionsQuestions" representedClassName="SessionsQuestions" syncable="YES">
+        <attribute name="isCorrect" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <relationship name="questions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Question" inverseName="sessions" inverseEntity="Question" syncable="YES"/>
+        <relationship name="sessions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Session" inverseName="questions" inverseEntity="Session" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Answer" positionX="-27" positionY="18" width="128" height="90"/>
+        <element name="Question" positionX="18" positionY="81" width="128" height="105"/>
+        <element name="Session" positionX="54" positionY="126" width="128" height="60"/>
+        <element name="SessionsQuestions" positionX="18" positionY="81" width="128" height="90"/>
+    </elements>
+</model>
